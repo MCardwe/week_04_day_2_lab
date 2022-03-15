@@ -32,16 +32,17 @@ def select_all():
 
     return albums
 
-# def select(id):
-#     artist = None
-#     sql = "SELECT * FROM artists WHERE id = %s"
-#     values = [id]
+def select(id):
+    album = None
+    sql = "SELECT * FROM albums WHERE id = %s"
+    values = [id]
 
-#     results = run_sql(sql, values)[0]
+    results = run_sql(sql, values)[0]
 
-#     if results is not None:
-#         artist = Artist(results['name'], results['id'])
-#     return artist
+    if results is not None:
+        artist = artist_repository.select(results['artist_id'])
+        album = Album(results['title'], results['genre'], artist, results['id'])
+    return album
 
 def delete_all():
 
