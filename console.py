@@ -5,11 +5,12 @@ from models.artist import Artist
 import repositories.artist_repository as artist_repository
 import repositories.album_repository as album_repository
 
-# artist_repository.delete_all() 
+artist_repository.delete_all() 
+album_repository.delete_all()
 
 artist_1 = Artist("The Cranberries")
 
-# artist_repository.save(artist_1)
+artist_repository.save(artist_1)
 
 # artist_2 = Artist("Adele")
 
@@ -26,6 +27,9 @@ album_1 = Album("Wake Up", "rock", artist_1)
 
 album_repository.save(album_1)
 
+albums = album_repository.select_all()
 
+for album in albums:
+    print(album.__dict__)
 
 pdb.set_trace()
